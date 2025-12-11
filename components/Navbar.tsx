@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,14 +31,14 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+          <Link to="/" className="flex items-center cursor-pointer">
             <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-2 rounded-lg text-white mr-2">
               <FileText size={24} />
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-900 to-purple-800">
               ResumeMatch AI
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -54,12 +55,12 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors">
+            <Link to="/login" className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors">
               Log in
-            </button>
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transform hover:-translate-y-0.5">
+            </Link>
+            <Link to="/signup" className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transform hover:-translate-y-0.5">
               Sign Up Free
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,12 +90,20 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4 flex flex-col space-y-3 px-3">
-              <button className="w-full text-center py-3 border border-gray-200 rounded-lg text-gray-700 font-medium hover:bg-gray-50">
+              <Link
+                to="/login"
+                className="w-full text-center py-3 border border-gray-200 rounded-lg text-gray-700 font-medium hover:bg-gray-50"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Log in
-              </button>
-              <button className="w-full text-center py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">
+              </Link>
+              <Link
+                to="/signup"
+                className="w-full text-center py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Sign Up Free
-              </button>
+              </Link>
             </div>
           </div>
         </div>
